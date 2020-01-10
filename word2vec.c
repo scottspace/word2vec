@@ -12,11 +12,11 @@
 //  See the License for the specific language governing permissions and
 //  limitations under the License.
 
-#include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 #include <math.h>
 #include <pthread.h>
+#include <stdio.h>
 
 #define MAX_STRING 100
 #define EXP_TABLE_SIZE 1000
@@ -71,7 +71,8 @@ void InitUnigramTable() {
 void ReadWord(char *word, FILE *fin, char *eof) {
   int a = 0, ch;
   while (1) {
-    ch = fgetc_unlocked(fin);
+   // ch = fgetc_unlocked(fin);
+    ch = fgetc(fin);
     if (ch == EOF) {
       *eof = 1;
       break;
