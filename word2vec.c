@@ -96,6 +96,11 @@ void ReadWord(char *word, FILE *fin, char *eof) {
 }
 
 // Returns hash value of a word
+//
+// Our hash is a string of the ASCII values for the word in memory, one
+// character per 8 bits, which we modulo against the hash_size.  The "* 257"
+// here shifts memory over 8 bits so we can slot in the next character.
+//
 int GetWordHash(char *word) {
   unsigned long long a, hash = 0;
   for (a = 0; a < strlen(word); a++) hash = hash * 257 + word[a];
